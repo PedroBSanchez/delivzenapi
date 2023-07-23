@@ -13,6 +13,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
+    restart: always
 
   app:
     build: .
@@ -28,3 +29,4 @@ services:
       - mongo
     depends_on:
       - mongo
+    restart: always
