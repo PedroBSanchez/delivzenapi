@@ -8,10 +8,10 @@ export const connectToDatabase = async (): Promise<any> => {
   mongoose.connect(mongo_url);
 
   mongoose.connection.on("error", (error) =>
-    console.error("Error on connect to database: " + error)
+    console.error("🖳 - Error on connect to database: " + error)
   );
   mongoose.connection.once("open", () =>
-    console.log("MongoDB successfully connected!")
+    console.log("🖳 - MongoDB successfully connected!")
   );
 
   return mongoose.connection;

@@ -48,7 +48,7 @@ class UserService {
   private generateToken(params = {}) {
     const secret: any = process.env.JWT_SECRET;
     return Jwt.sign({ id: params }, secret, {
-      expiresIn: 86400,
+      expiresIn: 3600,
     });
   }
 }

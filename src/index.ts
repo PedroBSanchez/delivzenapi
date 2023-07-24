@@ -2,7 +2,9 @@ import { config } from "dotenv";
 import express from "express";
 import cors from "cors";
 import { userControllerRoutes } from "./Controllers/UserController";
+import { itemControllerRoutes } from "./Controllers/ItemController";
 import { connectToDatabase } from "./database/Mongo";
+import { categoryControllerRoutes } from "./Controllers/CategoryController";
 
 const main = async () => {
   config();
@@ -13,6 +15,8 @@ const main = async () => {
   // Routes //
 
   app.use("/api/users", userControllerRoutes);
+  app.use("/api/items", itemControllerRoutes);
+  app.use("/api/categories", categoryControllerRoutes);
 
   ////////////
 
