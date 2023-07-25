@@ -15,6 +15,14 @@ const ItemSchema = new Schema<Item>(
   { collection: "Items" }
 );
 
+ItemSchema.pre("save", async function (next) {
+  this.additional.map((element, index) => {
+    element.code = index + 1;
+  });
+
+  next();
+});
+
 const ItemModel = model<Item>("Items", ItemSchema);
 
 export { ItemModel, ItemSchema };
