@@ -1,0 +1,45 @@
+import { Item } from "./Item";
+
+class Order {
+  public status: number;
+  public totalValue: number;
+  public code: number;
+  public client: string;
+  public paymentMethod: string;
+  public address: string;
+  public adressNumber: string;
+  public complement: string;
+  public neighborhood: string;
+  public phoneNumber: string;
+  public items: Array<Item>;
+  public created_at: Date;
+  constructor(
+    status: number,
+    totalValue: number,
+    code: number,
+    client: string,
+    paymentMethod: string,
+    address: string,
+    adressNumber: string,
+    complement: string,
+    neighborhood: string,
+    phoneNumber: string,
+    items: Array<Item>,
+    created_at: Date
+  ) {
+    this.status = status;
+    this.totalValue = totalValue;
+    this.code = code;
+    this.client = client;
+    this.paymentMethod = paymentMethod;
+    this.address = address;
+    this.adressNumber = adressNumber;
+    this.complement = complement;
+    this.neighborhood = neighborhood;
+    this.phoneNumber = phoneNumber;
+    this.items = items;
+    this.created_at = created_at;
+  }
+}
+
+export { Order };

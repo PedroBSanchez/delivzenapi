@@ -25,8 +25,6 @@ class ItemController {
 
   useRoutes(): void {
     this.router.post("/create", async (req: any, res: Response) => {
-      //Validar e chamar service
-
       try {
         this.authMiddleware(req, res);
         if (req.userId) {
@@ -118,7 +116,6 @@ class ItemController {
     this.router.get("/getmenu", async (req: any, res: Response) => {
       try {
         const menu = await this.itemService.getMenu();
-
         return res.status(200).send(menu);
       } catch (error) {
         console.log(error);

@@ -38,6 +38,7 @@ class UserController {
     });
 
     this.router.post("/signup", async (req: Request, res: Response) => {
+      //return res.status(400).send("Not Allowed");
       const signupData: InterfaceUserSignUp = req.body;
       const createNewUser = await this.userService.create(signupData);
 
