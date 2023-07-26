@@ -67,6 +67,19 @@ class UserController {
         return res.status(500).send(error);
       }
     });
+
+    this.router.post("/validatetoken", async (req: any, res: Response) => {
+      try {
+        this.authMiddleware(req, res);
+        if (req.userId) {
+          return res.status(200).send({ success: "User logged" });
+        }
+        return res.status(400).send({ error: "User not logged" });
+      } catch (error) {
+        console.log(error);
+        return res.status(500).send({ error: "Internal Server Error" });
+      }
+    });
   }
 }
 
