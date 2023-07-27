@@ -42,14 +42,13 @@ class OrderRepository {
   }
 
   public async getOpenOrders(): Promise<Array<Order>> {
-    const openOrderStatus = 1;
-    const transitOrderStatus = 2;
+    const closedOrderStatus = 0;
 
     return await this.model
       .find({
-        $or: [{ status: openOrderStatus }, { status: transitOrderStatus }],
+        status: { $ne: closedOrderStatus },
       })
-      .sort({ status: "asc" });
+      .sort({ created_at: "desc" });
   }
 
   public async getOrderById(orderId: string): Promise<Order> {
