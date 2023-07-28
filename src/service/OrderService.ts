@@ -4,6 +4,7 @@ import {
 } from "../Interfaces/OrderInterface";
 import { Additional } from "../models/Additional";
 import { Order } from "../models/Order";
+import { OrderItem } from "../models/OrderItem";
 import { ItemRepository } from "../repository/ItemRepository";
 import { OrderRepository } from "../repository/OrderRepository";
 const moment = require("moment-timezone");
@@ -56,7 +57,18 @@ class OrderService {
           orderTotalValue +=
             (itemInDB.value + orderAdditionalsTotalPrice) * clientItem.amount;
           itemInDB.additional = itemAdditionals;
-          newOrder.items.push(itemInDB);
+
+          const newOrderItem = new OrderItem(
+            itemInDB.name,
+            itemInDB.value,
+            itemInDB.description,
+            itemInDB.additional,
+            itemInDB.category,
+            itemInDB.created_at,
+            clientItem.amount
+          );
+
+          newOrder.items.push(newOrderItem);
         }
       })
     );

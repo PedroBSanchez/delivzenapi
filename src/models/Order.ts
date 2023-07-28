@@ -1,4 +1,5 @@
 import { Item } from "./Item";
+import { OrderItem } from "./OrderItem";
 
 class Order {
   public status: number;
@@ -11,7 +12,7 @@ class Order {
   public complement: string;
   public neighborhood: string;
   public phoneNumber: string;
-  public items: Array<Item>;
+  public items: Array<OrderItem>;
   public created_at: Date;
   constructor(
     status: number,
@@ -24,7 +25,7 @@ class Order {
     complement: string,
     neighborhood: string,
     phoneNumber: string,
-    items: Array<Item>,
+    items: Array<OrderItem>,
     created_at: Date
   ) {
     this.status = status;
