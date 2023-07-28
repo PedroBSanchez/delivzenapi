@@ -48,6 +48,9 @@ class OrderRepository {
       .find({
         status: { $ne: closedOrderStatus },
       })
+      .select(
+        "_id created_at totalValue address adressNumber neighborhood complement status client paymentMethod"
+      )
       .sort({ created_at: "desc" });
   }
 
