@@ -38,8 +38,12 @@ class ItemRepository {
     return await this.model.deleteOne({ _id: itemId });
   }
 
-  public async getAll(): Promise<Array<Item>> {
-    return await this.model.find({});
+  public async getAll(category: string = ""): Promise<Array<Item>> {
+    return await this.model
+      .find({
+        category: { $regex: category, $options: "i" },
+      })
+      .select("_id name value category");
   }
 
   public async listByCategory(category: string): Promise<Array<Item>> {

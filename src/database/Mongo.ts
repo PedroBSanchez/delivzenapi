@@ -2,8 +2,8 @@ import mongoose, { mongo } from "mongoose";
 import { config } from "dotenv";
 
 export const connectToDatabase = async (): Promise<any> => {
-  const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongo:27017`;
-  //const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@localhost:27017`;
+  //const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongo:27017`;
+  const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@localhost:27017`;
 
   mongoose.connect(mongo_url);
 

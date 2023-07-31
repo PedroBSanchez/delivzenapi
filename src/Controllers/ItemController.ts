@@ -104,7 +104,8 @@ class ItemController {
       try {
         this.authMiddleware(req, res);
         if (req.userId) {
-          const items = this.itemService.getAll();
+          const category = req.query.category ?? "";
+          const items = await this.itemService.getAll(category);
           return res.status(200).send(items);
         }
       } catch (error) {

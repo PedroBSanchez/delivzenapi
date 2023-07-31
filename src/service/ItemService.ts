@@ -28,8 +28,8 @@ class ItemService {
     return await this.itemRepository.delete(itemId);
   }
 
-  public async getAll(): Promise<Array<Item>> {
-    return await this.itemRepository.getAll();
+  public async getAll(category: string): Promise<Array<Item>> {
+    return await this.itemRepository.getAll(category);
   }
 
   public async getMenu() {
