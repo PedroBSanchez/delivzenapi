@@ -2,12 +2,15 @@ import { DeleteResult } from "mongodb";
 import { InterfaceCategoryCreate } from "../Interfaces/CategoryInterface";
 import { CategoryRepository } from "../repository/CategoryRepository";
 import { Category } from "../models/Category";
+import { ItemRepository } from "../repository/ItemRepository";
 
 class CategoryService {
   private categoryRepository: CategoryRepository;
+  private itemRepository: ItemRepository;
 
   constructor() {
     this.categoryRepository = new CategoryRepository();
+    this.itemRepository = new ItemRepository();
   }
 
   public async create(category: InterfaceCategoryCreate) {
@@ -19,6 +22,12 @@ class CategoryService {
   }
 
   public async delete(categoryId: string): Promise<DeleteResult> {
+    const category = await this.categoryRepository.getById(categoryId);
+
+    if (category) {
+      await this.itemRepository.deleteByCategory(category.name.toString());
+    }
+
     return await this.categoryRepository.delete(categoryId);
   }
 

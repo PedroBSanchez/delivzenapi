@@ -7,6 +7,7 @@ interface InterfaceOrderClientCreate {
   neighborhood: string;
   phoneNumber: string;
   items: Array<InterfaceOrderClientItem>;
+  observations: string;
 }
 
 interface InterfaceOrderClientItem {

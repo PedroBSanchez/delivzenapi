@@ -127,6 +127,11 @@ class OrderController {
         this.authMiddleware(req, res);
         if (req.userId) {
           const getOrdersByDateData: InterfaceOrderByDate = req.body;
+          const page =
+            parseInt(req.query.page) && parseInt(req.query.page) > 0
+              ? parseInt(req.query.page)
+              : 1;
+
           const validation =
             this.orderValidations.validateOrderByDate(getOrdersByDateData);
 
@@ -135,7 +140,8 @@ class OrderController {
           }
 
           const orders = await this.orderService.getOrderByDate(
-            getOrdersByDateData
+            getOrdersByDateData,
+            page
           );
 
           return res.status(200).send(orders);

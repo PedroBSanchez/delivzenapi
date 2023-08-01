@@ -58,14 +58,32 @@ class OrderRepository {
     return await this.model.findOne({ _id: orderId });
   }
 
-  public async getOrderByDate(start: Date, end: Date): Promise<Array<Order>> {
-    return await this.model.find({
+  public async getOrderByDate(start: Date, end: Date, page: number) {
+    const perPage = 10;
+    const totalOrders = await this.model.countDocuments({
       $and: [
         { status: 0 },
         { created_at: { $gte: start } },
         { created_at: { $lte: end } },
       ],
     });
+
+    const startIndex = (page - 1) * perPage;
+
+    const ordersPaginate = await this.model
+      .find({
+        $and: [
+          { status: 0 },
+          { created_at: { $gte: start } },
+          { created_at: { $lte: end } },
+        ],
+      })
+      .skip(startIndex)
+      .limit(perPage);
+
+    const totalPages = Math.ceil(totalOrders / perPage);
+
+    return { totalOrders, totalPages, page, perPage, orders: ordersPaginate };
   }
 }
 

@@ -53,6 +53,10 @@ class ItemRepository {
   public async getById(itemId: string): Promise<Item> {
     return await this.model.findOne({ _id: itemId });
   }
+
+  public async deleteByCategory(category: string): Promise<DeleteResult> {
+    return await this.model.deleteMany({ category: category });
+  }
 }
 
 export { ItemRepository };

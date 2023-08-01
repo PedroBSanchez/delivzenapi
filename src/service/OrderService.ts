@@ -36,7 +36,8 @@ class OrderService {
       order.neighborhood,
       order.phoneNumber,
       orderItems,
-      moment(Date.now()).utc(0)
+      moment(Date.now()).utc(0),
+      order.observations ?? ""
     );
 
     await Promise.all(
@@ -88,12 +89,10 @@ class OrderService {
     return await this.orderRepository.getOrderById(orderId);
   }
 
-  public async getOrderByDate(
-    params: InterfaceOrderByDate
-  ): Promise<Array<Order>> {
+  public async getOrderByDate(params: InterfaceOrderByDate, page: number) {
     const start = moment(params.start).utc(0);
     const end = moment(params.end).utc(0);
-    return await this.orderRepository.getOrderByDate(start, end);
+    return await this.orderRepository.getOrderByDate(start, end, page);
   }
 }
 

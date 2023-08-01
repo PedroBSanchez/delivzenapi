@@ -14,6 +14,7 @@ class Order {
   public phoneNumber: string;
   public items: Array<OrderItem>;
   public created_at: Date;
+  public observations: string;
   constructor(
     status: number,
     totalValue: number,
@@ -26,7 +27,8 @@ class Order {
     neighborhood: string,
     phoneNumber: string,
     items: Array<OrderItem>,
-    created_at: Date
+    created_at: Date,
+    observations: string
   ) {
     this.status = status;
     this.totalValue = totalValue;
@@ -40,6 +42,7 @@ class Order {
     this.phoneNumber = phoneNumber;
     this.items = items;
     this.created_at = created_at;
+    this.observations = observations;
   }
 }
 

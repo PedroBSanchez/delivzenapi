@@ -24,6 +24,7 @@ const OrderSchema = new Schema<Order>(
     phoneNumber: { type: String, required: true },
     items: { type: [], required: true },
     created_at: { type: Date, default: moment(Date.now()).utc(0) },
+    observations: { type: String, default: "" },
   },
   { collection: "Orders" }
 );

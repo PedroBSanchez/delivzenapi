@@ -27,6 +27,10 @@ class CategoryRepository {
       name: { $regex: category, $options: "i" },
     });
   }
+
+  public async getById(categoryId: string): Promise<Category> {
+    return await this.model.findOne({ _id: categoryId });
+  }
 }
 
 export { CategoryRepository };
