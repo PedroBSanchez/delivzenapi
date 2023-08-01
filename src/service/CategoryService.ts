@@ -11,6 +11,10 @@ class CategoryService {
   }
 
   public async create(category: InterfaceCategoryCreate) {
+    if (await this.categoryRepository.getByName(category.name)) {
+      return { error: "Category already registered" };
+    }
+
     return await this.categoryRepository.create(category);
   }
 

@@ -19,7 +19,13 @@ class CategoryRepository {
   }
 
   public async getAll(): Promise<Array<Category>> {
-    return await this.model.find({});
+    return await this.model.find({}).sort({ name: "asc" });
+  }
+
+  public async getByName(category: string): Promise<Category> {
+    return await this.model.findOne({
+      name: { $regex: category, $options: "i" },
+    });
   }
 }
 

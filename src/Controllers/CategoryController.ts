@@ -36,7 +36,12 @@ class CategoryController {
             return res.status(400).send({ error: validation.error.message });
           }
 
-          const newCategory = await this.categoryService.create(categoryData);
+          const newCategory: any = await this.categoryService.create(
+            categoryData
+          );
+          if (newCategory.error) {
+            return res.status(401).send({ error: newCategory.error });
+          }
           return res.status(200).send(newCategory);
         }
       } catch (error) {
