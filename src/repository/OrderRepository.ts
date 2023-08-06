@@ -49,7 +49,7 @@ class OrderRepository {
         status: { $ne: closedOrderStatus },
       })
       .select(
-        "_id created_at totalValue address adressNumber neighborhood complement status client paymentMethod"
+        "_id created_at totalValue address adressNumber neighborhood complement status client paymentMethod phoneNumber"
       )
       .sort({ created_at: "desc" });
   }
