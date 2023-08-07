@@ -31,9 +31,9 @@ services:
       - mongo
     restart: always
 
-  doof_client:
-    image: pedrobernardosanchez/doofclientui-doof_client:latest
-    container_name: doof_client
+  doof_client_image:
+    image: pedrobernardosanchez/doof_client_image
+    container_name: doof_client_image
     env_file:
       - .env
     ports:
@@ -42,11 +42,10 @@ services:
       - VITE_API_URL=${VITE_API_URL}
       - VITE_RESTAURANT_NAME=${VITE_RESTAURANT_NAME}
       - VITE_RESTAURANT_TIME=${VITE_RESTAURANT_TIME}
-    restart: always
 
-  doof_manager:
-    image: pedrobernardosanchez/doofmanagerui-doof_manager:latest
-    container_name: doof_manager
+  doof_managerui_image:
+    image: pedrobernardosanchez/doof_manager_image
+    container_name: doof_managerui_image
     env_file:
       - .env
     ports:
@@ -55,4 +54,3 @@ services:
       - VITE_API_URL=${VITE_API_URL}
       - VITE_RESTAURANT_NAME=${VITE_RESTAURANT_NAME}
       - VITE_RESTAURANT_TIME=${VITE_RESTAURANT_TIME}
-    restart: always
