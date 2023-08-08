@@ -39,11 +39,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - VITE_API_URL=${VITE_API_URL}
-      - VITE_RESTAURANT_NAME=${VITE_RESTAURANT_NAME}
-      - VITE_RESTAURANT_TIME=${VITE_RESTAURANT_TIME}
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+      - REACT_APP_RESTAURANT_NAME=${REACT_APP_RESTAURANT_NAME}
+      - REACT_APP_RESTAURANT_TIME=${REACT_APP_RESTAURANT_TIME}
 
-  doof_managerui_image:
+  doof_manager_image:
     image: pedrobernardosanchez/doof_manager_image
     container_name: doof_managerui_image
     env_file:
@@ -51,6 +51,6 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_URL=${VITE_API_URL}
-      - VITE_RESTAURANT_NAME=${VITE_RESTAURANT_NAME}
-      - VITE_RESTAURANT_TIME=${VITE_RESTAURANT_TIME}
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+      - REACT_APP_RESTAURANT_NAME=${REACT_APP_RESTAURANT_NAME}
+      - REACT_APP_RESTAURANT_TIME=${REACT_APP_RESTAURANT_TIME}
