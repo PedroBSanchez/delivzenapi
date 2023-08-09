@@ -26,11 +26,10 @@ class ItemValidations {
     const schema = Joi.object({
       value: Joi.number().min(0).required(),
       name: Joi.string().min(1).required(),
-      description: Joi.string().min(1),
       category: Joi.string().min(1).required(),
     });
 
-    return schema.validate({ value, name, description, category });
+    return schema.validate({ value, name, category });
   }
 }
 
