@@ -21,7 +21,13 @@ class ItemService {
     itemId: string,
     item: InterfaceItemCreate
   ): Promise<UpdateResult> {
-    return await this.itemRepository.update(itemId, item);
+    const itemData = item;
+
+    itemData.additional.map((element, index) => {
+      element.code = index + 1;
+    });
+
+    return await this.itemRepository.update(itemId, itemData);
   }
 
   public async delete(itemId: string): Promise<DeleteResult> {
