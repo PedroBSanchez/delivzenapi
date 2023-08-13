@@ -16,7 +16,7 @@ services:
       #- MONGO_INITDB_DATABASE=${MONGODB_DB}
     #restart: always
     volumes:
-      - /root/mongodata
+      - /root/mongodata:/data/db
 
   app:
     build: .
