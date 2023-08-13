@@ -5,7 +5,7 @@ export const connectToDatabase = async (): Promise<any> => {
   //const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongo:27017`;
   //const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@localhost:27017`;
 
-  const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongo:27017/${process.env.MONGODB_DB}`;
+  const mongo_url = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_DB}:27017/${process.env.MONGODB_DB}`;
 
   mongoose.connect(mongo_url);
 
