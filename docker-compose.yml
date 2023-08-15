@@ -38,7 +38,5 @@ services:
       - mongo
     depends_on:
       - mongo
-    network:
-      - my-network
     restart: always
 
