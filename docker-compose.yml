@@ -6,17 +6,18 @@ services:
     image: mongo
     env_file:
       - .env
-    ports:
-      - "27017:27017"
     logging:
       driver: none
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
       #- MONGO_INITDB_DATABASE=${MONGODB_DB}
-    #restart: always
+    restart: always
     volumes:
       - /root/mongodata:/data/db
+    networks:
+      - my-network
+     
 
   app:
     build: .
@@ -32,4 +33,10 @@ services:
       - mongo
     depends_on:
       - mongo
+    network:
+      - my-network
     restart: always
+
+networks:
+  my-network:
+    driver: bridge
