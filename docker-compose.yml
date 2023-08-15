@@ -34,6 +34,8 @@ services:
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
+    networks:
+      - my-network
     links:
       - mongo
     depends_on:
