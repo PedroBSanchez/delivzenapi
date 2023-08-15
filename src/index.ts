@@ -10,7 +10,15 @@ import { orderControllerRoutes } from "./Controllers/OrderController";
 const main = async () => {
   config();
   const app = express();
-  app.use(cors());
+
+  const corsOptions = {
+    origin: [
+      process.env.CLIENT_URL,
+      process.env.MANAGER_URL
+    ],
+  };
+  
+  app.use(cors(corsOptions));
   app.use(express.json());
 
   // Routes //
